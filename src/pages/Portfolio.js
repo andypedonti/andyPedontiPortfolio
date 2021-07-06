@@ -1,11 +1,32 @@
-import React from "react";
+import React, {Component} from "react";
+import portfoliothings from "../portfolioInfo.json";
+import Wrapper from "../Components/Wrapper";
+import PortfolioCard from "../Components/PortfolioCard";
 
-function Portfolio() {
+class Portfolio extends Component {
+    state = {
+        portfoliothings
+    };
+render() {
     return(
-        <div>
-            <h1>THIS IS THE Portfolio PAGE</h1>
-        </div>
+        
+        <Wrapper>
+            {this.state.portfoliothings.map(portfoliostuff => (
+                <PortfolioCard
+                id={portfoliostuff.id} 
+                key={portfoliostuff.id}
+                title={portfoliostuff.title}
+                image={portfoliostuff.image}
+                url={portfoliostuff.url}
+                description={portfoliostuff.description}
+                github={portfoliostuff.github}
+
+                />
+            ))}
+        </Wrapper>
+
+
     );
 }
-
+}
 export default Portfolio;
